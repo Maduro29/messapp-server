@@ -9,6 +9,10 @@ app.get("/", function (request, response) {
   response.send("Hello World");
 });
 
+app.get("/hello", (request, response) => {
+  response.send("Hello 2");
+});
+
 // Bắt đầu máy chủ
 
 const port = process.env.PORT || 3000;
