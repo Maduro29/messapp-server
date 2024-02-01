@@ -1,0 +1,25 @@
+{
+  "name": "messapp-server",
+  "version": "1.0.0",
+  "description": "Server for messaging app by NodeJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maduro29/messapp-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maduro29/messapp-server/issues"
+  },
+  "homepage": "https://github.com/Maduro29/messapp-server#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
