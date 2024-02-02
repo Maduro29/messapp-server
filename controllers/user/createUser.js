@@ -3,9 +3,9 @@ dotenv.config();
 
 import { v4 as uuidv4 } from "uuid";
 import pkg from "pg";
+const { Pool } = pkg;
 
 import { encodedPassword } from "../../services/user/encodedPassword.js";
-const { Pool } = pkg;
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -16,7 +16,6 @@ const pool = new Pool({
 
 export const createUser = async (req, res) => {
     const data = req.body;
-    console.log(req.body);
     const id = uuidv4();
 
     try {
@@ -63,7 +62,6 @@ export const createUser = async (req, res) => {
         }
     } catch (err) {
         console.error(err);
-        console.log(process.env.DATABASE_URL);
         res.json({
             errCode: 1,
             message: "Error!",

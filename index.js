@@ -2,6 +2,7 @@
 import express from "express";
 import { createUser } from "./controllers/user/createUser.js";
 import bodyParser from "body-parser";
+import { login } from "./controllers/user/login.js";
 
 // Tạo một ứng dụng Express
 var app = express();
@@ -25,3 +26,4 @@ app.listen(port, function () {
 
 // user apis
 app.post("/create-user", (req, res) => createUser(req, res));
+app.post("/login", (req, res) => login(req, res));
