@@ -6,7 +6,7 @@ import { login } from "./controllers/user/login.js";
 
 // Tạo một ứng dụng Express
 var app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Xử lý yêu cầu GET đến đường dẫn '/'
 app.get("/", function (request, response) {

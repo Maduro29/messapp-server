@@ -5,8 +5,6 @@ import pkg from "pg";
 import { comparePassword } from "../../services/user/comparePassword.js";
 const { Pool } = pkg;
 
-import { encodedPassword } from "../../services/user/encodedPassword.js";
-
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
