@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import pkg from "pg";
+import { comparePassword } from "../../services/user/comparePassword.js";
 const { Pool } = pkg;
 
 import { encodedPassword } from "../../services/user/encodedPassword.js";
@@ -15,6 +16,7 @@ const pool = new Pool({
 
 export const login = async (req, res) => {
     const data = req.body;
+    console.log(data);
 
     try {
         const client = await pool.connect();
@@ -29,16 +31,15 @@ export const login = async (req, res) => {
                 message: "Account belongs to this email is not existed!",
             });
         } else {
-            let password = await client.query(
-                "SELECT password FROM users WHERE id = $1",
-                [data.email],
-            );
-
-            let inPassword = encodedPassword(data.password);
-            if (inPassword === password) {
+            let user = result.rows[0];
+            let isPwRight = comparePassword(data.password, user.password);
+            if (isPwRight) {
+                const _user = user;
+                delete _user.password;
                 res.json({
                     errCode: 0,
                     message: "Login successfully!",
+                    user: _user,
                 });
             } else {
                 res.json({
